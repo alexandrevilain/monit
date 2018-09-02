@@ -1,0 +1,17 @@
+http:
+  listenAddr: '0.0.0.0:8000'
+  workingResponse: 'OK'
+  errorResponse: 'KO'
+services:
+  - name: DISK
+    checkJob:
+      command: "df -Ph . | tail -1 | awk '{print $5}' | cut -c1-2"
+      cron: '* * * * * *'
+      test: 'gt'
+      value: '80'
+  - name: RAM
+    checkJob:
+      command: 'echo 60'
+      cron: '* * * * * *'
+      test: 'eq'
+      value: '60'

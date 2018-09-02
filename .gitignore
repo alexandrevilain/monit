@@ -1,0 +1,5 @@
+monitoring
+.DS_Store
+.env
+vendor
+monit
